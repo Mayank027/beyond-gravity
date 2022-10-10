@@ -17,16 +17,20 @@ import { indigo } from "@mui/material/colors";
 
 
 
-export default function FreeSolo() {
+export default function BeyondGravity() {
   const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+
+  // Below are 3 state and function to handle MODAL when click on Add Task
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [title, setTitle] = useState("");
 
+  
+  const stepOneRecords = useSelector(records); // importing records state from redux-store
 
-  const stepOneRecords = useSelector(records);
-
+  // handleTask() method executed after adding a task in modal to add record in redux-store state
 
   const handleTask = () => {
     dispatch(addTask(title));
@@ -43,6 +47,9 @@ export default function FreeSolo() {
       alignItems="center"
       sx={{ padding:5}}
     >
+
+      {/* Below stack renders our search input box */}
+      
       <Stack spacing={2} sx={{ width: 300 }}>
         <Autocomplete
           freeSolo
@@ -62,6 +69,9 @@ export default function FreeSolo() {
           )}
         />
       </Stack>
+
+      {/* Render our MODAL Box to add task */}
+
       <div>
       <Button onClick={handleOpen} variant="contained" startIcon={<AddIcon />} sx={{bgcolor: indigo[400]}}>
         Add Task
@@ -85,7 +95,7 @@ export default function FreeSolo() {
     </Grid>
     
 
-    {/* Step Components */}
+    {/* Calling all 4 Step Components individually */}
     <Grid container direction="row" justifyContent='space-around'>
     <StepOne />
     <StepTwo />
@@ -95,6 +105,8 @@ export default function FreeSolo() {
     </Box>
   );
 }
+
+// Custom style for Modal box
 
 const style = {
   position: 'absolute',

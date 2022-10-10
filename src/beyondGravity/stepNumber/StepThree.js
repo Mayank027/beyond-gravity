@@ -12,12 +12,15 @@ import { indigo, red } from "@mui/material/colors";
 
 const StepThree = () => {
 
-    const stepOneRecords = useSelector(records);
+    const stepOneRecords = useSelector(records); // importing records state from redux-store
   const dispatch = useDispatch();
   return (
     <Box sx={{ width: 297, height: 572, backgroundColor: "#E4E7EE", paddingTop:2, borderRadius:2, marginBottom:4 }}>
-      <div  style={{fontFamily:'roboto', color:indigo[900]}}>Step 3</div>
+      <div  style={{fontFamily:'roboto', color:indigo[900]}}>Step 3</div> {/* Step Number  3 */}
       
+
+      {/* Below Grid renders Cards of all records which has stepNumber 3 */}
+
       <Grid container direction="col" justifyContent="center"  sx={{paddingTop:3}}>
         {stepOneRecords?.map((record) => {
           if (record.onStep === 3) {

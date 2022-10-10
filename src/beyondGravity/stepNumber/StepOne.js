@@ -10,13 +10,19 @@ import { deleteTask, records, stepUpTask } from "../RecordSlice";
 import { indigo, red } from "@mui/material/colors";
 
 const StepOne = () => {
-  const stepOneRecords = useSelector(records);
+
+  const stepOneRecords = useSelector(records); // importing records state from redux-store
   const dispatch = useDispatch();
 
 
   return (
     <Box sx={{ width: 297, height: 572, backgroundColor: "#E4E7EE", paddingTop:2, borderRadius:2, marginBottom:4 }}>
-      <div style={{fontFamily:'roboto', color:indigo[900]}}>Step 1</div>
+
+      <div style={{fontFamily:'roboto', color:indigo[900]}}>Step 1</div>  {/* Step Number 1  */}
+
+    
+    {/* Below Grid renders Cards of all records which has stepNumber 1 */}
+
       <Grid container direction="col" justifyContent="center" sx={{paddingTop:3}}>
         {stepOneRecords?.map((record) => {
           if (record.onStep === 1) {
@@ -37,7 +43,6 @@ const StepOne = () => {
                 />
                 
                 <CardActions style={{justifyContent: 'right'}}>
-                    {/* <ArrowCircleRightIcon onClick={() => dispatch(stepUpTask(record.id))} /> */}
                   <Button onClick={() => dispatch(stepUpTask(record.id))} startIcon={<ArrowCircleRightIcon sx={{color: indigo[300], width:25, height:25}} />}></Button>
                 </CardActions>
               </Card>
